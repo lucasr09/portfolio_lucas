@@ -1,4 +1,4 @@
-// app/Components/Footer/page.tsx
+// app/Components/Footer/route.tsx
 'use client';
 
 import React from "react";

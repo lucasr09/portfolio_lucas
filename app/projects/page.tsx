@@ -1,4 +1,4 @@
-/* projects\page.tsx */
+/* projects\route.tsx */
 import React from "react";
 
 export default function Projects() {
