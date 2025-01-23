@@ -1,48 +1,22 @@
-export default function OverMij() {
-    const skills = [
-        "Testing",
-        "Data Structures",
-        "Java",
-        "TypeScript",
-        "JavaScript",
-        "React",
-        "Next.js",
-    ];
+import {Metadata} from "next";
+export const metadata: Metadata = {
+    title: "portfolio",
+    description: "Portfolio in next.js made by Lucas Rensen",
+    other: {
+        author: "Lucas Rensen",
+        language: "en",
+    },
+    keywords: "Next.js, React, Portfolio, Typescript"
+}
+
+export default function Home() {
 
     return (
-        <section className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-800 px-6">
-            {}
-            <h1 className="text-4xl font-bold mb-6 text-center">Meet Lucas</h1>
-
-            {}
-            <p className="text-lg text-center leading-relaxed max-w-2xl">
-                Hey there 👋, thank you for visiting my page. My name is Lucas, and I enjoy solving problems by writing
-                code. Development has been a passion of mine ever since I was young, influenced by my surroundings and
-                the love for technology. I continue to challenge myself, learn, and grow while building solutions that
-                inspire and help others.
-            </p>
-
-            {}
-            <a
-                href="/resume"
-                className="mt-6 inline-block text-lg font-semibold text-gray-800 underline hover:text-yellow-500"
-            >
-                RESUME
-            </a>
-
-            {}
-            <div className="mt-12 w-full overflow-hidden">
-                <div className="flex items-center justify-center animate-marquee whitespace-nowrap">
-                    {skills.concat(skills).map((skill, index) => (
-                        <span
-                            key={index}
-                            className="mx-8 px-4 py-2 bg-gray-800 text-white rounded-full shadow-md"
-                        >
-                            {skill}
-                        </span>
-                    ))}
-                </div>
+        <div className="flex items-center justify-center min-h-screen text-center bg-fixed bg-cover bg-center bg-no-repeat bg-[url('/path/to/your-image.jpg')]">
+            <div>
+                <h1 className="text-5xl font-bold text-white mb-4">Hello, I am Lucas Rensen</h1>
+                <p className="text-3xl font-semibold text-yellow-500">I am a full stack Developer</p>
             </div>
-        </section>
+        </div>
     );
 }

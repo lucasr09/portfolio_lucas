@@ -1,50 +1,21 @@
-'use client';
+"use client"
+import {useForm} from 'react-hook-form';
+import {sendEmail} from '../components/utils/sendmails';
+import React from "react";
+import {FaLinkedin, FaGithub,} from 'react-icons/fa'
 
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
-
-interface FormData {
+export type FormData = {
     name: string;
     email: string;
     message: string;
-}
+};
 
-const Contact: React.FC = () => {
-    const [formData, setFormData] = useState<FormData>({
-        name: '',
-        email: '',
-        message: '',
-    });
+export default function Contact() {
+    const {register, handleSubmit} = useForm<FormData>();
 
-    const [status, setStatus] = useState<string>('');
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
-
-    const handleSubmit = async (e: FormEvent): Promise<void> => {
-        e.preventDefault();
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                setStatus('Email sent successfully!');
-            } else {
-                setStatus('Failed to send email. Please try again.');
-            }
-        } catch (error) {
-            setStatus('An error occurred. Please try again.');
-        }
-    };
+    function onSubmit(data: FormData) {
+        sendEmail(data);
+    }
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center px-6 pt-24">
@@ -53,7 +24,7 @@ const Contact: React.FC = () => {
                     {/* Form Section */}
                     <div className="p-8 bg-gray-50">
                         <h1 className="text-3xl font-bold mb-6 text-gray-800 text-center">Get in Touch</h1>
-                        <form className="space-y-6" onSubmit={handleSubmit}>
+                        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                                     Name
@@ -61,10 +32,7 @@ const Contact: React.FC = () => {
                                 <input
                                     type="text"
                                     id="name"
-                                    name="name"
-                                    required
-                                    value={formData.name}
-                                    onChange={handleChange}
+                                    {...register('name', {required: true})}
                                     className="mt-1 p-3 block w-full border border-gray-300 rounded-lg text-black focus:ring-blue-500 focus:border-blue-500 shadow-sm"
                                 />
                             </div>
@@ -75,10 +43,7 @@ const Contact: React.FC = () => {
                                 <input
                                     type="email"
                                     id="email"
-                                    name="email"
-                                    required
-                                    value={formData.email}
-                                    onChange={handleChange}
+                                    {...register('email', {required: true})}
                                     className="mt-1 p-3 block w-full border border-gray-300 rounded-lg text-black focus:ring-blue-500 focus:border-blue-500 shadow-sm"
                                 />
                             </div>
@@ -88,10 +53,7 @@ const Contact: React.FC = () => {
                                 </label>
                                 <textarea
                                     id="message"
-                                    name="message"
-                                    required
-                                    value={formData.message}
-                                    onChange={handleChange}
+                                    {...register('message', {required: true})}
                                     className="mt-1 p-3 block w-full border border-gray-300 rounded-lg text-black focus:ring-blue-500 focus:border-blue-500 shadow-sm"
                                 ></textarea>
                             </div>
@@ -111,8 +73,8 @@ const Contact: React.FC = () => {
                         <h2 className="text-2xl font-semibold mb-4 text-gray-800">Contact Information</h2>
                         <p className="text-gray-600 mb-2">
                             Email:{" "}
-                            <a href="mailto:lucasrensen@outlook.com" className="text-blue-500 hover:underline">
-                                lucasrensen@outlook.com
+                            <a href="mailto:rensenlucas1@gmail.com" className="text-blue-500 hover:underline">
+                                rensenlucas1@gmail.com
                             </a>
                         </p>
                         <p className="text-gray-600 mb-6">
@@ -146,5 +108,3 @@ const Contact: React.FC = () => {
         </div>
     );
 };
-
-export default Contact;
