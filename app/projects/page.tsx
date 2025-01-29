@@ -1,34 +1,34 @@
-/* projects\route.tsx */
 import React from "react";
 
 export default function Projects() {
     const projects = [
-        {
-            title: "Project Naam 1",
-            description: "Korte beschrijving van het project.",
-            image: "/Schermopname(522).png",
-            link: "/link-to-project1",
-        },
-        {
-            title: "Project Naam 2",
-            description: "Korte beschrijving van het project.",
-            image: "/path/to/project-image2.jpg",
-            link: "/link-to-project2",
-        },
-        {
-            title: "Project Naam 3",
-            description: "Korte beschrijving van het project.",
-            image: "/path/to/project-image3.jpg",
-            link: "/link-to-project3",
-        },
-    ];
+    {
+        title: "Smart Web App",
+        description: "A simple app that uses smart technology to make your life easier.",
+        image: "/smartweb.jpg", // Correct path
+        link: "/projects/smart-web-app",
+    },
+    {
+        title: "Online Shopping Platform",
+        description: "A fast and modern website to shop for your favorite products.",
+        image: "/ecommerce-platform.jpg",
+        link: "/projects/online-shopping",
+    },
+    {
+        title: "Creative Portfolio",
+        description: "A place to show and discover amazing creative projects.",
+        image: "/creative-portfolio.jpg",
+        link: "/projects/creative-portfolio",
+    },
+];
+
 
     return (
         <section id="projects" className="min-h-screen bg-gray-800 text-white py-12">
             <div className="container mx-auto px-4">
-                {/* Tekst "Mijn Projecten" iets naar beneden geplaatst */}
-                <h2 className="text-4xl font-bold mb-6 mt-6 text-center">Mijn Projecten</h2>
-                {/* Grid met 3 kolommen */}
+                <h2 className="text-4xl font-bold mb-6 mt-6 text-center">My Projects</h2>
+
+                {/* Project Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
                         <div key={index} className="project-tile bg-gray-700 p-4 rounded shadow-lg">
@@ -47,6 +47,14 @@ export default function Projects() {
                             </a>
                         </div>
                     ))}
+                </div>
+
+                {/* Upcoming Projects Section */}
+                <div className="mt-12 text-center">
+                    <h3 className="text-3xl font-bold mb-4 text-yellow-400">Coming Soon!</h3>
+                    <p className="text-gray-400">
+                        i am working on fun and useful projects that will help you in everyday life. Stay tuned for updates!
+                    </p>
                 </div>
             </div>
         </section>
